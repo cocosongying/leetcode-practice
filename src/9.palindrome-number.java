@@ -50,16 +50,15 @@
 // @lc code=start
 class Solution {
     public boolean isPalindrome(int x) {
-        if (x < 0) {
+        if (x < 0 || (x % 10 == 0 && x != 0)) {
             return false;
         }
-        int num = x, result = 0;
-        while (num != 0) {
-            int digit = num % 10;
-            num /= 10;
-            result = result * 10 + digit;
+        int result = 0;
+        while (x > result) {
+            result = result * 10 + x % 10;
+            x /= 10;
         }
-        return x == result;
+        return (x == result || x == result / 10);
     }
 }
 // @lc code=end
